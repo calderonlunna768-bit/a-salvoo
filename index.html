@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A Salvo - Presentación</title>
+  
+  <!-- Librería ScrollReveal para las animaciones -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <style>
+    /* --------------------------------------------------
+       1. ESTILOS GENERALES Y RESET
+    -------------------------------------------------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    body {
+      background-color: #EDE8D0; /* Color de tu paleta */
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* --------------------------------------------------
+       2. PORTADA / HERO (IMAGEN PRINCIPAL DE FONDO)
+    -------------------------------------------------- */
+    .hero-header {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Imagen de fondo de la portada (aquí puedes poner la foto de los perritos) */
+    .hero-bg-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.38); /* Oscurece un poco la foto para que resalte el logo */
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+    }
+
+    /* OPCIÓN DEL LOGO PRINCIPAL MUY VISIBLE */
+    .main-logo-img {
+      max-width: 620px;
+      width: 92vw;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0px 12px 24px rgba(0, 0, 0, 0.6));
+    }
+
+    /* --------------------------------------------------
+       3. SECCIÓN PARA LA IMAGEN DEL PATRÓN
+    -------------------------------------------------- */
+    .pattern-section {
+      width: 100%;
+      height: 180px;
+      background-color: #EDE8D0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: 4px solid #0B21E0;
+      border-bottom: 4px solid #0B21E0;
+    }
+
+    .pattern-section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* --------------------------------------------------
+       4. CONTENEDOR Y CUADRO GRANDE DE FONDO
+    -------------------------------------------------- */
+    .content-wrapper {
+      padding: 80px 20px;
+      display: flex;
+      justify-content: center;
+      background-color: #EDE8D0;
+    }
+
+    .large-card-bg {
+      background-color: #ffffff;
+      width: 100%;
+      max-width: 1400px;
+      padding: 80px 40px;
+      border-radius: 28px;
+      box-shadow: 0 20px 40px rgba(11, 33, 224, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 50px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* --------------------------------------------------
+       5. TARJETAS E IMÁGENES CON ANIMACIÓN HOVER
+    -------------------------------------------------- */
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                  box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      overflow: hidden;
+    }
+
+    .card-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .card:hover .card-image-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: #0B21E0;
+      color: #ffffff;
+      font-weight: 800;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    /* --------------------------------------------------
+       6. SECCIONES DE TEXTO INFORMATIVO
+    -------------------------------------------------- */
+    .info-text-container {
+      background-color: #fcfbfa;
+      border-left: 6px solid #0B21E0;
+      border-right: 6px solid #009FE3;
+      padding: 35px 45px;
+      border-radius: 16px;
+      max-width: 1100px;
+      width: 100%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .info-text-container p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #2b2b2b;
+      font-weight: 400;
+    }
+
+    .highlight-brand {
+      color: #0B21E0;
+      font-weight: 700;
+    }
+
+    .app-text-container {
+      border-left: 6px solid #009FE3;
+      border-right: 6px solid #F9D53E;
+    }
+
+    .app-title {
+      font-size: 1.4rem;
+      color: #0B21E0;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Responsivo para celulares */
+    @media (max-width: 768px) {
+      .large-card-bg {
+        padding: 40px 20px;
+      }
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .card-image-wrapper {
+        height: 400px;
+      }
+      .info-text-container {
+        padding: 25px 20px;
+      }
+      .info-text-container p {
+        font-size: 1rem;
+      }
+      .pattern-section {
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================== -->
+  <!-- 1. PORTADA (HERO SECTION)                            -->
+  <!-- ================================================== -->
+  <header class="hero-header">
+    
+    <!-- CAMBIA 'foto-perritos.jpg' por el nombre de tu imagen principal de fondo -->
+    <img src="imagenes/fondo.png" alt="Imagen principal de perritos" class="hero-bg-img" />
+    
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content reveal-logo">
+      <!-- CAMBIA 'logo-a-salvo.png' por el archivo de tu logotipo principal -->
+      <img src="imagenes/a salvo.png" alt="A Salvo Logo Principal" class="main-logo-img" />
+    </div>
+
+  </header>
+
+  <!-- ================================================== -->
+  <!-- 2. FRANJA PARA TU IMAGEN DE PATRÓN                 -->
+  <!-- ================================================== -->
+  <div class="pattern-section">
+    <!-- CAMBIA 'patron.png' por el nombre de tu archivo de patrón -->
+    <img src="imagenes/patron a asalvo.png" alt="Patrón de Diseño A Salvo" />
+  </div>
+
+  <!-- ================================================== -->
+  <!-- 3. CONTENEDOR CON CUADRO DE FONDO GRANDE           -->
+  <!-- ================================================== -->
+  <main class="content-wrapper">
+    <section class="large-card-bg reveal-box">
+      
+      <!-- Grid de las 2 Imágenes -->
+      <div class="cards-grid">
+        <!-- Tarjeta 1 -->
+        <article class="card reveal-left">
+          <div class="card-image-wrapper">
+            <div class="card-badge">A SALVO</div>
+            <!-- CAMBIA 'imagen1.jpg' por la ruta de tu primera foto -->
+            <img src="imagenes/piezas 1 y 2 -01.png" alt="Imagen 1" />
+          </div>
+        </article>
+
+        <!-- Tarjeta 2 -->
+        <article class="card reveal-right">
+          <div class="card-image-wrapper">
+            <div class="card-badge">A SALVO</div>
+            <!-- CAMBIA 'imagen2.jpg' por la ruta de tu segunda foto -->
+            <img src="imagenes/piezas 1 y 2 -02 copy.png" alt="Imagen 2" />
+          </div>
+        </article>
+      </div>
+
+      <!-- Bloque de Texto 1: Propósito Institucional -->
+      <div class="info-text-container reveal-text-1">
+        <p>
+          <span class="highlight-brand">“A Salvo”</span> busca demostrar que la protección de los animales no depende únicamente de las fundaciones o de las personas que trabajan directamente con ellos, sino que todos podemos formar parte de la solución. A través de la empatía, la tenencia responsable y la participación ciudadana, es posible generar pequeñas acciones que ayuden a mejorar la vida de un animal.
+        </p>
+      </div>
+
+      <!-- Bloque de Texto 2: Propuesta de la Aplicación -->
+      <div class="info-text-container app-text-container reveal-text-2">
+        <h3 class="app-title">📱 Innovación Tecnológica para el Bienestar Animal</h3>
+        <p>
+          Se plantea como una propuesta que busca generar un impacto positivo mediante la unión del diseño, la tecnología y la participación ciudadana. Su importancia radica en crear una herramienta accesible que permita transformar la preocupación por el bienestar animal en acciones concretas, facilitando la comunicación entre las personas que identifican un caso, las fundaciones y quienes tienen la posibilidad de brindar ayuda.
+        </p>
+      </div>
+     <!-- ================================================== -->
+  <!-- SECCIÓN CON IMAGEN DE FONDO EN VEZ DE COLOR BEIGE  -->
+  <!-- ================================================== -->
+  <section class="playstore-popup-section custom-bg-image">
+    <div class="popup-phone-frame reveal-popup">
+      <div class="popup-notch"></div>
+      
+      <div class="popup-screen">
+        
+        <div class="popup-header">
+          <img src="imagenes/LOGO.png" alt="Ícono A Salvo" class="popup-app-icon" />
+          <div class="popup-app-titles">
+            <h3>A Salvo: Bienestar y Rescate Animal</h3>
+            <span class="popup-dev">A Salvo Foundation • Protección y Comunidad</span>
+          </div>
+        </div>
+
+        <div class="popup-metrics">
+          <div>
+            <span class="m-val">4,9 ★</span>
+            <small>Calificación</small>
+          </div>
+          <div class="popup-divider"></div>
+          <div>
+            <span class="m-val">+100k</span>
+            <small>Rescatistas</small>
+          </div>
+          <div class="popup-divider"></div>
+          <div>
+            <span class="m-val">Social</span>
+            <small>Categoría</small>
+          </div>
+        </div>
+
+        <div class="popup-cards-container">
+          
+          <div class="popup-feature-card" style="background-color: #0b21e0;">
+            <div class="popup-card-text">
+              <h4>Reporte Ciudadano</h4>
+              <p>Geolocaliza y reporta animales en riesgo de forma rápida y segura.</p>
+            </div>
+            <div class="popup-card-img-box">
+              <img src="imagenes/animales2.png" alt="Reporte Ciudadano en la App" />
+            </div>
+          </div>
+
+          <div class="popup-feature-card" style="background-color: #009fe3;">
+            <div class="popup-card-text">
+              <h4>Red de Fundaciones</h4>
+              <p>Conéctate al instante con refugios y voluntarios dispuestos a brindar ayuda.</p>
+            </div>
+            <div class="popup-card-img-box">
+              <img src="imagenes/animales3.png" alt="Red de Fundaciones en la App" />
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* --------------------------------------------------
+       ESTILOS PARA REEMPLAZAR EL COLOR POR UNA IMAGEN
+    -------------------------------------------------- */
+    .playstore-popup-section.custom-bg-image {
+      width: 100%;
+      /* CAMBIA 'fondo-seccion.jpg' por tu imagen de fondo */
+      background: url('imagenes/fondo web.png') center/cover no-repeat;
+      position: relative;
+      padding: 140px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Opcional: Si quieres añadir una capa semitransparente sobre la imagen 
+       para que el celular resalte más, puedes descomentar las líneas de abajo: */
+    /*
+    .playstore-popup-section.custom-bg-image::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(237, 232, 208, 0.85); 
+      z-index: 1;
+    }
+    .playstore-popup-section > * {
+      z-index: 2;
+    }
+    */
+
+    .popup-phone-frame {
+      width: 860px;
+      background-color: #121212;
+      border-radius: 75px;
+      padding: 30px 30px 45px 30px;
+      box-shadow: 0 50px 110px rgba(0, 0, 0, 0.45), inset 0 0 0 3px #333333;
+      position: relative;
+    }
+
+    .popup-notch {
+      width: 240px;
+      height: 36px;
+      background-color: #121212;
+      border-radius: 18px;
+      margin: 0 auto 25px auto;
+    }
+
+    .popup-screen {
+      background-color: #181a1b;
+      border-radius: 50px;
+      padding: 50px 45px;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .popup-header {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .popup-app-icon {
+      width: 135px;
+      height: 135px;
+      border-radius: 32px;
+      object-fit: cover;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .popup-app-titles h3 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .popup-dev {
+      font-size: 1.2rem;
+      color: #009fe3;
+      font-weight: 600;
+    }
+
+    .popup-metrics {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.03);
+      padding: 18px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .popup-metrics div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .m-val {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .popup-metrics small {
+      font-size: 1.05rem;
+      color: #aaaaaa;
+      margin-top: 6px;
+    }
+
+    .popup-divider {
+      width: 1px;
+      height: 45px;
+      background-color: #333333;
+    }
+
+    .popup-cards-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .popup-feature-card {
+      border-radius: 32px;
+      padding: 30px 22px 0 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+    }
+
+    .popup-card-text h4 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .popup-card-text p {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.45;
+      margin-bottom: 22px;
+    }
+
+    .popup-card-img-box {
+      width: 100%;
+      height: 320px;
+      border-radius: 22px 22px 0 0;
+      overflow: hidden;
+      background-color: #ffffff;
+      box-shadow: 0 -5px 20px rgba(0,0,0,0.15);
+    }
+
+    .popup-card-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 920px) {
+      .popup-phone-frame {
+        width: 100%;
+        max-width: 500px;
+        padding: 20px;
+      }
+      .popup-screen {
+        padding: 30px 20px;
+      }
+      .popup-cards-container {
+        grid-template-columns: 1fr;
+      }
+      .popup-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .popup-app-titles h3 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+  
